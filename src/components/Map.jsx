@@ -116,6 +116,9 @@ export default function Map() {
       <div className="py-6 px-6">
         <DateRangePicker format="y-MM-dd" onChange={onChange} value={value} />
       </div>
+      <h1 className="text-blue-700 text-xl font-sans pb-1 ">
+          Choose 2 points to calculate distance:
+      </h1>
       {canCalculate && (
         <div>
           <button
