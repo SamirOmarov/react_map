@@ -25,6 +25,7 @@ export default function Map() {
       if (it.show) {
         activeMarker++;
       }
+      return activeMarker;
     });
     if (activeMarker === 2) {
       setCanCalulate(true);
@@ -57,7 +58,8 @@ export default function Map() {
 
   useEffect(() => {
     buttonHandler();
-  }, [filteredMarkers,distance]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredMarkers, distance]); 
 
   useEffect(() => {
     let StartDate = value[0];
@@ -71,6 +73,7 @@ export default function Map() {
     setFilteredMarkers(filteredMarkers);
     console.log("Filterd", filteredMarkers);
     console.log("All", markers);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const onChildClickCallback = (key) => {
@@ -117,7 +120,7 @@ export default function Map() {
         <DateRangePicker format="y-MM-dd" onChange={onChange} value={value} />
       </div>
       <h1 className="text-blue-700 text-xl font-sans pb-1 ">
-          Choose 2 points to calculate distance:
+        Choose 2 points to calculate distance:
       </h1>
       {canCalculate && (
         <div>
@@ -127,7 +130,9 @@ export default function Map() {
           >
             Calculate Distance
           </button>
-          <p className="text-gray-700 text-lg font-serif pb-1 ">{distance.toPrecision(5)} meters</p>
+          <p className="text-gray-700 text-lg font-serif pb-1 ">
+            {distance.toPrecision(5)} meters
+          </p>
         </div>
       )}
     </div>
